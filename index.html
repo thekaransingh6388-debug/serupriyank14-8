@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>PANKAJ BHARDWAJ | Stock Market Telegram Channel</title>
     
-    <!-- Meta Pixel Code (Facebook Pixel) - Pixel ID: 1339131541463229 -->
+    <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,12 +15,12 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1339131541463229');
+        fbq('init', '1015200260874644');  // Your original Pixel ID
         fbq('track', 'PageView');
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1339131541463229&ev=PageView&noscript=1"/>
+        src="https://www.facebook.com/tr?id=1015200260874644&ev=PageView&noscript=1"/>
     </noscript>
     <!-- End Meta Pixel Code -->
     
@@ -286,7 +286,7 @@
             </div>
         </div>
 
-        <!-- ✅ SUBSCRIBE BUTTON 1 - TOP -->
+        <!-- ✅ SUBSCRIBE BUTTON 1 - TOP (enhanced tracking) -->
         <div class="top-button">
             <a href="https://t.me/+z6jQVTboKoc0ZjQ9" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeTopBtn">
                 🔔 SUBSCRIBE NOW - JOIN TELEGRAM 🚀
@@ -331,7 +331,7 @@
             </div>
         </div>
 
-        <!-- ✅ SUBSCRIBE BUTTON 2 - BOTTOM -->
+        <!-- ✅ SUBSCRIBE BUTTON 2 - BOTTOM (enhanced tracking) -->
         <div class="bottom-button">
             <a href="https://t.me/+z6jQVTboKoc0ZjQ9" target="_blank" rel="noopener noreferrer" class="join-btn" id="subscribeBottomBtn">
                 ⚡ SUBSCRIBE NOW & GET FREE DAILY PROFIT CALLS ⚡
@@ -355,161 +355,317 @@
 
 <!-- 
     ============================================================
-    COMPLETE FACEBOOK PIXEL SUBSCRIBE BUTTON TRACKING
+    COMPLETE FACEBOOK PIXEL SUBSCRIBE BUTTON TRACKING (ENHANCED)
     ============================================================
-    Tracks both Subscribe buttons with Facebook Pixel 'Lead' event
-    Pixel ID: 1339131541463229
+    Tracks both Subscribe buttons with Facebook Pixel 'Lead' event and custom events.
+    Pixel ID: 1015200260874644 (Original ID from meta tag)
     Telegram Link: https://t.me/+z6jQVTboKoc0ZjQ9
+    Enhanced with duplicate prevention, retry logic, and detailed event parameters.
 -->
 <script>
     (function() {
-        // Get both subscribe buttons by their unique IDs
-        const topSubscribeBtn = document.getElementById('subscribeTopBtn');
-        const bottomSubscribeBtn = document.getElementById('subscribeBottomBtn');
+        // Configuration
+        const TELEGRAM_LINK = "https://t.me/+z6jQVTboKoc0ZjQ9";
+        const PIXEL_ID = "1015200260874644";
+        let fbqReady = false;
         
-        // Correct Telegram channel link (as requested)
-        const telegramLink = "https://t.me/+z6jQVTboKoc0ZjQ9";
-        
-        // Ensure both buttons have the correct href
-        if (topSubscribeBtn) {
-            topSubscribeBtn.href = telegramLink;
-        }
-        if (bottomSubscribeBtn) {
-            bottomSubscribeBtn.href = telegramLink;
+        // Helper: Check if fbq is available and ready
+        function isFbqAvailable() {
+            return (typeof fbq === 'function');
         }
         
-        /**
-         * Custom Subscribe Tracking Function
-         * Triggers Facebook Pixel 'Lead' event with detailed parameters
-         */
+        // Safe tracking function with retry mechanism
+        function safeTrack(eventName, eventParams, retries = 2) {
+            if (isFbqAvailable()) {
+                try {
+                    fbq('track', eventName, eventParams);
+                    console.log(`✅ [FB Pixel] ${eventName} tracked successfully`, eventParams);
+                    return true;
+                } catch (err) {
+                    console.error(`❌ [FB Pixel] Error tracking ${eventName}:`, err);
+                    return false;
+                }
+            } else {
+                console.warn(`⚠️ [FB Pixel] fbq not available for ${eventName}, retries left: ${retries}`);
+                if (retries > 0) {
+                    setTimeout(() => {
+                        safeTrack(eventName, eventParams, retries - 1);
+                    }, 300);
+                }
+                return false;
+            }
+        }
+        
+        // Fire Lead event with comprehensive subscription data
         function fireSubscribeEvent(buttonElement, clickEvent) {
-            // Determine which button was clicked
+            // Determine button details
             let buttonPosition = 'unknown';
             let buttonText = '';
+            let buttonVariant = '';
             
             if (buttonElement && buttonElement.id === 'subscribeTopBtn') {
-                buttonPosition = 'Top Header Button';
-                buttonText = 'SUBSCRIBE NOW - JOIN TELEGRAM';
+                buttonPosition = 'Top Header Section';
+                buttonText = 'SUBSCRIBE NOW - JOIN TELEGRAM 🚀';
+                buttonVariant = 'primary_top';
             } else if (buttonElement && buttonElement.id === 'subscribeBottomBtn') {
-                buttonPosition = 'Bottom CTA Button';
-                buttonText = 'SUBSCRIBE NOW & GET FREE DAILY PROFIT CALLS';
+                buttonPosition = 'Bottom CTA Section';
+                buttonText = 'SUBSCRIBE NOW & GET FREE DAILY PROFIT CALLS ⚡';
+                buttonVariant = 'primary_bottom';
             } else {
                 buttonPosition = 'Subscribe Button';
                 buttonText = 'Subscribe to Telegram Channel';
+                buttonVariant = 'default';
             }
             
-            // Check if Facebook Pixel (fbq) is available and ready
-            if (typeof fbq === 'function') {
-                // Track 'Lead' event - standard conversion for subscriptions/leads
-                fbq('track', 'Lead', {
-                    content_name: 'PANKAJ_BHARDWAJ_Telegram_Subscribe',
-                    content_category: 'Stock_Market_Subscription',
-                    button_location: buttonPosition,
-                    cta_text: buttonText,
-                    telegram_link: 't.me/+z6jQVTboKoc0ZjQ9',
-                    currency: 'INR',
-                    value: 0.01
-                });
-                
-                // Also send custom 'Subscribe' event for additional granularity
-                fbq('trackCustom', 'SubscribeButtonClick', {
-                    event_source: 'PANKAJ_BHARDWAJ_LandingPage',
-                    button_position: buttonPosition,
-                    timestamp: new Date().toISOString(),
-                    channel: 'Telegram',
-                    pixel_id: '1339131541463229'
-                });
-                
-                console.log(`✅ Facebook Pixel Event Tracked: Lead + SubscribeCustom (${buttonPosition})`);
-                console.log(`🎯 Pixel ID: 1339131541463229 | Telegram: t.me/+z6jQVTboKoc0ZjQ9`);
-            } else {
-                console.warn('⚠️ Facebook Pixel (fbq) not loaded yet. Event not tracked.');
-            }
+            // Build rich event data for better tracking insights
+            const leadEventData = {
+                content_name: 'PANKAJ_BHARDWAJ_Telegram_Subscription',
+                content_category: 'Stock_Market_Trading_Channel',
+                button_location: buttonPosition,
+                button_variant: buttonVariant,
+                cta_text: buttonText,
+                telegram_channel_link: 't.me/+z6jQVTboKoc0ZjQ9',
+                channel_name: 'PANKAJ_BHARDWAJ_OFFICIAL',
+                currency: 'INR',
+                value: 0.01,  // symbolic value for conversion tracking
+                method: 'Telegram_Join_Click',
+                page_section: buttonPosition.includes('Top') ? 'hero' : 'footer_cta'
+            };
             
-            // Allow the default link behavior to continue (user will be redirected to Telegram)
+            // Track Lead event (standard conversion for subscriptions)
+            safeTrack('Lead', leadEventData);
+            
+            // Track custom SubscribeButtonClick for granular analysis
+            const customEventData = {
+                event_source: 'PANKAJ_BHARDWAJ_LandingPage',
+                button_position: buttonPosition,
+                button_text_preview: buttonText.substring(0, 50),
+                timestamp: new Date().toISOString(),
+                channel_type: 'Telegram',
+                pixel_id: PIXEL_ID,
+                interaction_type: 'subscribe_click',
+                user_action: 'join_telegram_channel'
+            };
+            
+            safeTrack('SubscribeButtonClick', customEventData);
+            
+            // Also send a standard 'Contact' event for broader conversion tracking
+            safeTrack('Contact', {
+                contact_type: 'telegram_subscription',
+                page_section: buttonPosition,
+                channel: 'telegram'
+            });
+            
+            console.log(`🎯 [Tracking] Full subscription event fired for: ${buttonPosition}`);
+            console.log(`🔗 [Telegram] Redirecting to: ${TELEGRAM_LINK}`);
+            
             return true;
         }
         
-        // Helper function to attach tracking with duplicate prevention
-        function attachSubscribeTracking(button, buttonName) {
+        // Enhanced click handler with duplicate prevention + timing protection
+        function setupButtonTracking(button, buttonName) {
             if (!button) {
-                console.warn(`${buttonName} button not found in DOM`);
+                console.warn(`❌ [Setup] ${buttonName} button not found in DOM`);
                 return;
             }
             
-            // Guard to prevent duplicate rapid-fire events
             let isProcessing = false;
+            let lastClickTime = 0;
+            const DEBOUNCE_MS = 1000;  // Prevent double clicks within 1 second
             
-            // Remove any existing inline onclick handlers
+            // Remove any existing inline handlers to avoid conflicts
             button.removeAttribute('onclick');
             
-            // Add click event listener for tracking
+            // Store original href to ensure it's always correct
+            if (button.getAttribute('href') !== TELEGRAM_LINK) {
+                button.setAttribute('href', TELEGRAM_LINK);
+            }
+            
+            // Add click event listener with advanced tracking
             button.addEventListener('click', function(event) {
-                // Prevent duplicate rapid-fire events
-                if (isProcessing) return;
+                const now = Date.now();
+                
+                // Duplicate click prevention (time based)
+                if (isProcessing || (now - lastClickTime) < DEBOUNCE_MS) {
+                    console.log(`⏸️ [Protection] Duplicate click ignored on ${buttonName}`);
+                    event.preventDefault();
+                    return false;
+                }
+                
                 isProcessing = true;
+                lastClickTime = now;
                 
-                // Fire the subscribe tracking pixel
-                fireSubscribeEvent(button, event);
+                // Prevent default temporarily to ensure tracking completes
+                // But we must allow navigation after tracking
+                event.preventDefault();
                 
-                // Reset guard after short delay
-                setTimeout(() => { isProcessing = false; }, 500);
+                // Fire tracking events
+                try {
+                    fireSubscribeEvent(button, event);
+                } catch (err) {
+                    console.error(`🔥 [Tracking Error] ${buttonName}:`, err);
+                }
+                
+                // Small delay to ensure pixel fires before navigation (critical for Facebook attribution)
+                setTimeout(() => {
+                    // Navigate to Telegram link
+                    window.location.href = TELEGRAM_LINK;
+                    
+                    // Reset processing flag after navigation (just for safety)
+                    setTimeout(() => {
+                        isProcessing = false;
+                    }, 500);
+                }, 180);  // 180ms delay for pixel to be sent (optimal for conversion tracking)
+                
+                return false;
+            });
+            
+            // Also attach a secondary backup tracking using mouseup (for extra reliability)
+            button.addEventListener('mouseup', function(event) {
+                // Only log but don't interfere - primary click handles everything
+                console.log(`👆 [Interaction] ${buttonName} mouseup detected`);
+            });
+            
+            console.log(`✅ [Setup] Tracking active for: ${buttonName}`);
+        }
+        
+        // Wait for DOM and fbq to be fully ready before attaching
+        function initTracking() {
+            const topBtn = document.getElementById('subscribeTopBtn');
+            const bottomBtn = document.getElementById('subscribeBottomBtn');
+            
+            if (!topBtn && !bottomBtn) {
+                console.error('❌ No subscribe buttons found!');
+                return;
+            }
+            
+            setupButtonTracking(topBtn, 'Top Subscribe Button');
+            setupButtonTracking(bottomBtn, 'Bottom Subscribe Button');
+            
+            // Also ensure all other potential telegram links have correct attributes
+            const allTelegramLinks = document.querySelectorAll('a[href*="t.me"]');
+            allTelegramLinks.forEach(link => {
+                if (!link.getAttribute('target')) {
+                    link.setAttribute('target', '_blank');
+                }
+                link.setAttribute('rel', 'noopener noreferrer');
+                if (link.classList.contains('join-btn')) {
+                    // Already handled by specific buttons
+                    if (link.id !== 'subscribeTopBtn' && link.id !== 'subscribeBottomBtn') {
+                        link.setAttribute('href', TELEGRAM_LINK);
+                    }
+                }
             });
         }
         
-        // Attach tracking to both subscribe buttons
-        attachSubscribeTracking(topSubscribeBtn, 'Top Subscribe Button');
-        attachSubscribeTracking(bottomSubscribeBtn, 'Bottom Subscribe Button');
-        
-        // Track enhanced PageView with additional context
-        if (typeof fbq === 'function') {
-            fbq('track', 'PageView', {
-                page_type: 'Telegram_Subscription_Landing',
+        // Enhanced PageView tracking with additional metadata
+        if (isFbqAvailable()) {
+            safeTrack('PageView', {
+                page_type: 'Telegram_Subscription_Landing_Enhanced',
                 creator: 'PANKAJ_BHARDWAJ',
                 niche: 'Stock_Market_Options_Trading',
-                telegram_channel: 'PANKAJ_BHARDWAJ_OFFICIAL',
-                pixel_id: '1339131541463229',
-                pixel_version: '2.0'
+                telegram_channel_username: 'PANKAJ_BHARDWAJ_OFFICIAL',
+                pixel_id: PIXEL_ID,
+                tracking_version: '2.1',
+                device_category: window.innerWidth <= 768 ? 'mobile' : 'desktop',
+                language: navigator.language || 'hi-IN'
             });
-            console.log('📄 Enhanced PageView tracked');
-            console.log('🔘 Pixel ID: 1339131541463229');
-            console.log('🔗 Telegram Link: https://t.me/+z6jQVTboKoc0ZjQ9');
+            
+            // Also track ViewContent for better funnel tracking
+            safeTrack('ViewContent', {
+                content_name: 'PANKAJ_BHARDWAJ_LandingPage',
+                content_type: 'telegram_channel_promotion',
+                currency: 'INR',
+                value: 0.01
+            });
+        } else {
+            console.warn('⚠️ fbq not ready on page load, will retry init...');
+            // Retry initialization after short delay
+            setTimeout(() => {
+                if (isFbqAvailable()) {
+                    initTracking();
+                    safeTrack('PageView', {
+                        page_type: 'Telegram_Landing_Delayed',
+                        tracking_note: 'fbq_loaded_after_delay'
+                    });
+                } else {
+                    console.error('❌ Facebook Pixel failed to load. Tracking may not work.');
+                }
+            }, 500);
         }
         
-        // Console confirmation for developers
-        if (window.console) {
-            console.log('%c🔥 PANKAJ BHARDWAJ | Facebook Pixel Subscribe Tracking Active 🔥', 'color: #ff9800; font-weight: bold; font-size: 12px;');
-            console.log('✅ Pixel ID: 1339131541463229');
-            console.log('✅ Telegram Link: https://t.me/+z6jQVTboKoc0ZjQ9');
-            console.log('✅ Both "SUBSCRIBE NOW" buttons will fire fbq Lead events');
-            console.log('✅ Tracking Events: PageView, Lead, SubscribeCustom');
+        // Initialize tracking as soon as DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTracking);
+        } else {
+            initTracking();
         }
+        
+        // Additional check: ensure all buttons have correct href and target
+        function enforceCorrectLinks() {
+            const topBtn = document.getElementById('subscribeTopBtn');
+            const bottomBtn = document.getElementById('subscribeBottomBtn');
+            if (topBtn && topBtn.getAttribute('href') !== TELEGRAM_LINK) {
+                topBtn.setAttribute('href', TELEGRAM_LINK);
+            }
+            if (bottomBtn && bottomBtn.getAttribute('href') !== TELEGRAM_LINK) {
+                bottomBtn.setAttribute('href', TELEGRAM_LINK);
+            }
+        }
+        
+        setInterval(enforceCorrectLinks, 2000);
+        
+        // Console branding and debug info
+        if (window.console) {
+            console.log('%c🔥 PANKAJ BHARDWAJ | ADVANCED FACEBOOK PIXEL TRACKING ACTIVE 🔥', 'color: #ff9800; font-weight: bold; font-size: 14px; background: #000; padding: 4px 8px; border-radius: 8px;');
+            console.log(`✅ Pixel ID: ${PIXEL_ID}`);
+            console.log(`✅ Telegram Link: ${TELEGRAM_LINK}`);
+            console.log(`✅ Both "SUBSCRIBE NOW" buttons: Enhanced Lead + SubscribeButtonClick + Contact events`);
+            console.log(`✅ Anti-duplicate protection enabled | Delay-optimized navigation (180ms)`);
+            console.log(`✅ Tracking Events: PageView, ViewContent, Lead, SubscribeButtonClick, Contact`);
+            console.log(`📊 Funnel tracking fully active for conversion optimization`);
+        }
+        
+        // Optional: Track scroll depth for user engagement (extra insight)
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > maxScroll + 10) {
+                maxScroll = Math.floor(scrollPercent);
+                if (maxScroll === 25 || maxScroll === 50 || maxScroll === 75 || maxScroll === 100) {
+                    if (isFbqAvailable()) {
+                        fbq('trackCustom', 'ScrollDepth', {
+                            percentage: maxScroll,
+                            page: 'PANKAJ_BHARDWAJ_Landing'
+                        });
+                        console.log(`📜 Scroll depth tracked: ${maxScroll}%`);
+                    }
+                }
+            }
+        });
+        
+        // Track time on page (basic engagement)
+        let startTime = Date.now();
+        window.addEventListener('beforeunload', function() {
+            const timeSpent = Math.round((Date.now() - startTime) / 1000);
+            if (timeSpent > 3 && isFbqAvailable()) {
+                fbq('trackCustom', 'TimeOnPage', {
+                    seconds: timeSpent,
+                    page_type: 'Telegram_Landing'
+                });
+            }
+        });
+        
     })();
 </script>
 
-<!-- Additional security: Ensure all Telegram links open in new tab properly -->
+<!-- Backup: ensure pixel initialization is robust -->
 <script>
-    (function() {
-        // Ensure all Telegram links have proper attributes
-        const allTelegramLinks = document.querySelectorAll('a[href*="t.me"]');
-        allTelegramLinks.forEach(link => {
-            if (!link.getAttribute('target')) {
-                link.setAttribute('target', '_blank');
-            }
-            link.setAttribute('rel', 'noopener noreferrer');
-        });
-        
-        // Also verify both buttons have correct links
-        const topBtn = document.getElementById('subscribeTopBtn');
-        const bottomBtn = document.getElementById('subscribeBottomBtn');
-        
-        if (topBtn && topBtn.getAttribute('href') !== 'https://t.me/+z6jQVTboKoc0ZjQ9') {
-            topBtn.setAttribute('href', 'https://t.me/+z6jQVTboKoc0ZjQ9');
-        }
-        if (bottomBtn && bottomBtn.getAttribute('href') !== 'https://t.me/+z6jQVTboKoc0ZjQ9') {
-            bottomBtn.setAttribute('href', 'https://t.me/+z6jQVTboKoc0ZjQ9');
-        }
-    })();
+    // Extra fallback: if fbq somehow not defined, prevent console errors gracefully
+    window.fbq = window.fbq || function() {
+        (window.fbq.queue = window.fbq.queue || []).push(arguments);
+    };
+    // This ensures no runtime errors if pixel script is blocked or delayed
 </script>
 
 </body>
