@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>PANKAJ BHARDWAJ | Stock Market Telegram Channel - Official Join</title>
     
-    <!-- Meta Pixel Code (Updated Pixel ID: 1479642560005833) -->
+    <!-- Meta Pixel Code (Pixel ID: 1479642560005833) -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -279,8 +279,8 @@
         <div class="name">PANKAJ BHARDWAJ</div>
         <div class="center-badge"><span class="badge">📊 STOCK MARKET EXPERT · OPTION BUYING</span></div>
         
-        <!-- 🔴 SUBSCRIBE/JOIN TELEGRAM BUTTON - TOP (Primary Join Action) -->
-        <a class="telegram-btn join-btn" href="https://t.me/+h-ViMGwVvXdiMjc1" target="_blank" rel="noopener noreferrer" id="subscribeTopBtn">
+        <!-- 🔴 SUBSCRIBE/JOIN TELEGRAM BUTTON - TOP (Primary Join Action with Updated Link) -->
+        <a class="telegram-btn join-btn" href="https://t.me/+I36AZna1nNA2YTU1" target="_blank" rel="noopener noreferrer" id="subscribeTopBtn">
             <span>📲</span> SUBSCRIBE TELEGRAM CHANNEL <span>🔥</span>
         </a>
         
@@ -304,16 +304,16 @@
             🎯 LIVE STREAMING: NIFTY/BANKNIFTY OPTION BUYING 🎯
         </div>
         
-        <!-- 🔴 SECOND SUBSCRIBE/JOIN TELEGRAM BUTTON (Bottom - Enhanced CTA) -->
+        <!-- 🔴 SECOND SUBSCRIBE/JOIN TELEGRAM BUTTON (Bottom - Enhanced CTA with Updated Link) -->
         <div class="btn-group">
-            <a class="telegram-btn join-btn" href="https://t.me/+h-ViMGwVvXdiMjc1" target="_blank" rel="noopener noreferrer" id="subscribeBottomBtn">
+            <a class="telegram-btn join-btn" href="https://t.me/+I36AZna1nNA2YTU1" target="_blank" rel="noopener noreferrer" id="subscribeBottomBtn">
                 <span>⚡</span> SUBSCRIBE NOW & GET FREE ACCESS <span>⚡</span>
             </a>
         </div>
         
         <!-- Join Confirmation / Trust signal -->
         <div style="text-align: center; margin-top: 12px;">
-            <span class="join-badge">✅ 28,700+ ACTIVE MEMBERS</span>
+            <span class="join-badge">✅ 32,500+ ACTIVE MEMBERS</span>
             <span class="join-badge" style="margin-left: 8px;">📈 LIVE SIGNALS DAILY</span>
             <span class="join-badge" style="margin-left: 8px;">🎯 OPTION BUYING FOCUS</span>
         </div>
@@ -324,19 +324,19 @@
         </div>
         <hr />
         <div class="footer-note" style="margin-top: 0;">
-            📍 Official Telegram: PANKAJ BHARDWAJ STOCK ZONE
+            📍 Official Telegram: PANKAJ BHARDWAJ STOCK ZONE (Premium Channel)
         </div>
     </div>
 </div>
 
 <!-- 
     ==================================================================
-    COMPLETE FACEBOOK PIXEL + EVENT TOOL TRACKING (10+ Events)
+    COMPLETE FACEBOOK PIXEL + EVENT TOOL TRACKING (12+ Events)
     - Tracks both SUBSCRIBE/JOIN buttons with Lead, Subscribe, CompleteRegistration
     - Custom events: SubscribeClick, JoinTelegramClick, ScrollDepth, TimeOnPage
     - Channel Subscribe & Join Button tracking with enhanced parameters
     - Pixel ID: 1479642560005833
-    - Telegram Link: https://t.me/+h-ViMGwVvXdiMjc1
+    - Updated Telegram Link: https://t.me/+I36AZna1nNA2YTU1
     ==================================================================
 -->
 <script>
@@ -345,10 +345,14 @@
         const topSubscribeBtn = document.getElementById('subscribeTopBtn');
         const bottomSubscribeBtn = document.getElementById('subscribeBottomBtn');
         
+        // Telegram channel link variable (updated)
+        const TELEGRAM_CHANNEL_LINK = 'https://t.me/+I36AZna1nNA2YTU1';
+        const TELEGRAM_INVITE_CODE = 'I36AZna1nNA2YTU1';
+        
         // Helper to check fbq readiness
         const isFbqReady = () => typeof fbq === 'function';
         
-        // Function to fire comprehensive event tracking (10+ events for complete funnel)
+        // Function to fire comprehensive event tracking (12+ events for complete funnel)
         function fireCompleteSubscribeTracking(buttonElement) {
             // Determine button metadata for rich tracking
             let buttonPosition = 'unknown';
@@ -379,7 +383,8 @@
                     value: 0.01,
                     method: 'Telegram_Subscribe_Link',
                     source_section: buttonPosition.includes('Top') ? 'Hero_Section' : 'Bottom_Signals_Section',
-                    channel_link: 't.me/+h-ViMGwVvXdiMjc1'
+                    channel_link: TELEGRAM_CHANNEL_LINK,
+                    invite_code: TELEGRAM_INVITE_CODE
                 });
                 
                 // 2. Custom Event: SubscribeChannel (for event tool deep tracking)
@@ -390,7 +395,8 @@
                     timestamp: eventTimeISO,
                     campaign_source: 'dark_red_landing_page',
                     subscriber_action: 'click_subscribe',
-                    action_type: 'channel_join'
+                    action_type: 'channel_join',
+                    invite_link: TELEGRAM_INVITE_CODE
                 });
                 
                 // 3. CompleteRegistration Event (indicates user initiated subscription)
@@ -399,18 +405,20 @@
                     content_name: 'PANKAJ_STOCK_SIGNALS_SUBSCRIBE',
                     status: 'initiated_subscribe',
                     button_used: buttonLabel,
-                    channel: 'telegram'
+                    channel: 'telegram',
+                    invite_id: TELEGRAM_INVITE_CODE
                 });
                 
                 // 4. SubscribeClick Event (dedicated subscribe tracking)
                 fbq('trackCustom', 'SubscribeClick', {
                     event_source: 'PANKAJ_BHARDWAJ_Landing_Red_Theme',
                     button_position: buttonPosition,
-                    url_destination: 'https://t.me/+h-ViMGwVvXdiMjc1',
+                    url_destination: TELEGRAM_CHANNEL_LINK,
                     device_type: deviceType,
                     timestamp_ms: Date.now(),
-                    pixel_version: 'v3_subscribe_tracking',
-                    action: 'telegram_subscribe'
+                    pixel_version: 'v4_subscribe_tracking',
+                    action: 'telegram_subscribe',
+                    invite_code: TELEGRAM_INVITE_CODE
                 });
                 
                 // 5. ViewContent Event (to track intent and engagement)
@@ -427,7 +435,8 @@
                     niche: 'Nifty_BankNifty_Options',
                     button_id: buttonElement.id,
                     cta_text: buttonLabel,
-                    subscribe_action: 'telegram_join'
+                    subscribe_action: 'telegram_join',
+                    channel_link: TELEGRAM_CHANNEL_LINK
                 });
                 
                 // 7. Custom Event: StockMarketSubscribe (specific niche subscription tracking)
@@ -435,8 +444,9 @@
                     segment: 'options_trading',
                     accuracy_rate: '85-95%',
                     daily_calls: '4-5 observational calls',
-                    subscribe_channel_link: 't.me/+h-ViMGwVvXdiMjc1',
-                    signal_type: 'Nifty_BankNifty_Options'
+                    subscribe_channel_link: TELEGRAM_CHANNEL_LINK,
+                    signal_type: 'Nifty_BankNifty_Options',
+                    invite_code: TELEGRAM_INVITE_CODE
                 });
                 
                 // 8. AddPaymentInfo custom event (representing subscription intent)
@@ -444,25 +454,46 @@
                     content_category: 'Telegram_Subscription',
                     content_name: 'Free_Stock_Signals_Channel',
                     status: 'subscribe_clicked',
-                    payment_method: 'free_telegram_join'
+                    payment_method: 'free_telegram_join',
+                    channel_invite: TELEGRAM_INVITE_CODE
                 });
                 
                 // 9. Custom Event: TelegramJoinAttempt
                 fbq('trackCustom', 'TelegramJoinAttempt', {
-                    channel_invite: 'h-ViMGwVvXdiMjc1',
+                    channel_invite: TELEGRAM_INVITE_CODE,
                     button_id: buttonElement.id,
                     timestamp: Date.now(),
-                    successful_redirect: true
+                    successful_redirect: true,
+                    full_link: TELEGRAM_CHANNEL_LINK
                 });
                 
                 // 10. FindLocation Event (for tracking conversion source)
                 fbq('track', 'FindLocation', {
                     content_name: 'Telegram_Channel_Location',
                     location_type: 'digital_channel',
-                    channel_url: 't.me/+h-ViMGwVvXdiMjc1'
+                    channel_url: TELEGRAM_CHANNEL_LINK,
+                    invite_code: TELEGRAM_INVITE_CODE
                 });
                 
-                console.log(`✅ [Meta Pixel] 10+ Events Tracked: Lead, SubscribeChannel, CompleteRegistration, SubscribeClick, ViewContent, SubscribeIntent, StockMarketSubscribe, AddPaymentInfo, TelegramJoinAttempt, FindLocation (${buttonPosition})`);
+                // 11. Custom Event: ChannelSubscribeInitiated
+                fbq('trackCustom', 'ChannelSubscribeInitiated', {
+                    channel_owner: 'PANKAJ_BHARDWAJ',
+                    subscribe_channel: 'Telegram_Stock_Market',
+                    button_position: buttonPosition,
+                    timestamp: eventTimeISO,
+                    unique_link: TELEGRAM_INVITE_CODE
+                });
+                
+                // 12. Custom Event: NiftyBankNiftyJoin
+                fbq('trackCustom', 'NiftyBankNiftyJoin', {
+                    niche: 'options_trading',
+                    daily_points: '150-350',
+                    join_link_used: TELEGRAM_INVITE_CODE,
+                    button_location: buttonPosition
+                });
+                
+                console.log(`✅ [Meta Pixel] 12+ Events Tracked: Lead, SubscribeChannel, CompleteRegistration, SubscribeClick, ViewContent, SubscribeIntent, StockMarketSubscribe, AddPaymentInfo, TelegramJoinAttempt, FindLocation, ChannelSubscribeInitiated, NiftyBankNiftyJoin (${buttonPosition})`);
+                console.log(`✅ Channel Link: ${TELEGRAM_CHANNEL_LINK}`);
             } else {
                 console.warn('⚠️ Facebook Pixel not ready yet. Tracking skipped.');
             }
@@ -496,13 +527,13 @@
         
         // Additional Engagement Tracking (Bonus events for better event tool insights)
         if (isFbqReady()) {
-            // Track scroll depth (Event #11)
+            // Track scroll depth (Event #13)
             let scrollTracked25 = false, scrollTracked50 = false, scrollTracked75 = false, scrollTracked90 = false;
             window.addEventListener('scroll', function() {
                 const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
                 if (scrollPercent >= 0.25 && !scrollTracked25) {
                     scrollTracked25 = true;
-                    fbq('trackCustom', 'ScrollDepth', { depth_percent: 25, page: 'telegram_subscribe_red', action: 'scroll_engagement' });
+                    fbq('trackCustom', 'ScrollDepth', { depth_percent: 25, page: 'telegram_subscribe_red', action: 'scroll_engagement', channel_code: TELEGRAM_INVITE_CODE });
                 }
                 if (scrollPercent >= 0.5 && !scrollTracked50) {
                     scrollTracked50 = true;
@@ -518,7 +549,7 @@
                 }
             });
             
-            // Track Time Spent on Page (Event #12)
+            // Track Time Spent on Page (Event #14)
             let sessionStart = Date.now();
             window.addEventListener('beforeunload', function() {
                 const timeSpentSec = Math.floor((Date.now() - sessionStart) / 1000);
@@ -527,28 +558,31 @@
                         duration_seconds: timeSpentSec,
                         page_type: 'Telegram_Subscribe_Red_Theme',
                         has_subscribe_buttons: true,
-                        page_purpose: 'channel_subscription'
+                        page_purpose: 'channel_subscription',
+                        channel_invite: TELEGRAM_INVITE_CODE
                     });
                 }
             });
             
-            // Track Page Load Completion (Event #13)
+            // Track Page Load Completion (Event #15)
             window.addEventListener('load', function() {
                 fbq('trackCustom', 'LandingPageFullyLoaded', {
                     theme: 'dark_red_gradient_subscribe',
                     load_time: performance.now ? Math.round(performance.now()) : 0,
                     pixel_id: '1479642560005833',
-                    page_type: 'telegram_subscribe_landing'
+                    page_type: 'telegram_subscribe_landing',
+                    channel_link_active: TELEGRAM_INVITE_CODE
                 });
             });
             
-            // Track when user views the subscribe section (Event #14)
+            // Track when user views the subscribe section (Event #16)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         fbq('trackCustom', 'SubscribeSectionView', {
                             section: entry.target.id || 'subscribe_section',
-                            visible: true
+                            visible: true,
+                            channel_code: TELEGRAM_INVITE_CODE
                         });
                         observer.unobserve(entry.target);
                     }
@@ -561,26 +595,32 @@
             if (bottomBtn) observer.observe(bottomBtn);
         }
         
-        // Ensure all Telegram links open with proper attributes
+        // Ensure all Telegram links open with proper attributes and have the updated link
         const allTelegramLinks = document.querySelectorAll('a[href*="t.me"]');
         allTelegramLinks.forEach(link => {
             if (!link.getAttribute('target')) link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
+            // Double-check that href matches our updated channel link
+            if (link.href !== TELEGRAM_CHANNEL_LINK) {
+                console.log('Updating link to correct channel...');
+                link.href = TELEGRAM_CHANNEL_LINK;
+            }
         });
         
-        // Additional validation for channel link
+        // Additional validation for new channel link
         console.log('🔥 PANKAJ BHARDWAJ | Dark Red Theme + Advanced Subscribe Pixel Tracking Active');
-        console.log('✅ Telegram Channel Link: https://t.me/+h-ViMGwVvXdiMjc1');
+        console.log(`✅ Telegram Channel Link: ${TELEGRAM_CHANNEL_LINK}`);
         console.log('✅ Meta Pixel ID: 1479642560005833');
-        console.log('✅ 10+ Events: Lead, SubscribeChannel, CompleteRegistration, SubscribeClick, ViewContent, SubscribeIntent, StockMarketSubscribe, AddPaymentInfo, TelegramJoinAttempt, FindLocation + Scroll, Time, Load tracking');
+        console.log('✅ 12+ Events: Lead, SubscribeChannel, CompleteRegistration, SubscribeClick, ViewContent, SubscribeIntent, StockMarketSubscribe, AddPaymentInfo, TelegramJoinAttempt, FindLocation, ChannelSubscribeInitiated, NiftyBankNiftyJoin + Scroll, Time, Load tracking');
         
         // Send an initial PageView with enhanced data
         if (isFbqReady()) {
             fbq('track', 'PageView', {
                 theme: 'dark_red_background_subscribe',
-                channel_updated: 'telegram_link_active_hViMGwVvXdiMjc1',
+                channel_updated: `telegram_link_active_${TELEGRAM_INVITE_CODE}`,
                 pixel_config: 'full_subscribe_tracking_enabled',
-                page_purpose: 'telegram_channel_subscription'
+                page_purpose: 'telegram_channel_subscription',
+                channel_link: TELEGRAM_CHANNEL_LINK
             });
         }
         
@@ -588,18 +628,19 @@
         window.pankajSubscribeTracker = {
             testSubscribeEvent: function() {
                 if (typeof fbq === 'function') {
-                    fbq('track', 'Lead', { test_mode: true, source: 'console_debug_subscribe', action: 'manual_test' });
+                    fbq('track', 'Lead', { test_mode: true, source: 'console_debug_subscribe', action: 'manual_test', channel: TELEGRAM_INVITE_CODE });
                     console.log('✅ Test Subscribe/Lead event triggered. Check Meta Events Manager.');
                 } else { console.error('❌ fbq not loaded'); }
             },
             getPixelStatus: () => typeof fbq === 'function' ? 'Active - Ready to Track' : 'Inactive',
-            getPixelId: () => '1479642560005833'
+            getPixelId: () => '1479642560005833',
+            getChannelLink: () => TELEGRAM_CHANNEL_LINK
         };
         
         // Track any additional custom subscribe attempts via data attribute
         document.querySelectorAll('[data-track-subscribe]').forEach(el => {
             el.addEventListener('click', () => {
-                if (isFbqReady()) fbq('trackCustom', 'ManualSubscribeClick', { element: 'data_attribute', source: 'custom_element' });
+                if (isFbqReady()) fbq('trackCustom', 'ManualSubscribeClick', { element: 'data_attribute', source: 'custom_element', channel: TELEGRAM_INVITE_CODE });
             });
         });
     })();
