@@ -23,7 +23,6 @@
       padding: 35px 16px;
       text-align: center;
     }
-    /* online bar */
     .online {
       display: inline-flex;
       align-items: center;
@@ -41,7 +40,6 @@
       background: #22c55e;
       border-radius: 50%;
     }
-    /* profile */
     .profile {
       width: 120px;
       height: 120px;
@@ -71,7 +69,6 @@
       color: #ff9800;
       font-size: 18px;
     }
-    /* buttons */
     .btn {
       display: block;
       background: linear-gradient(135deg, #0066ff, #004dcc);
@@ -91,7 +88,6 @@
     .btn:active {
       transform: scale(0.97);
     }
-    /* stats */
     .stats {
       display: flex;
       gap: 10px;
@@ -109,7 +105,6 @@
       font-size: 20px;
       font-weight: bold;
     }
-    /* content */
     .heading {
       font-size: 17px;
       font-weight: bold;
@@ -132,7 +127,6 @@
       font-weight: bold;
       margin: 20px 0;
     }
-    /* features */
     .feature {
       background: white;
       padding: 15px;
@@ -147,7 +141,6 @@
     .icon {
       font-size: 22px;
     }
-    /* footer */
     .ads {
       margin-top: 35px;
       padding: 18px;
@@ -192,7 +185,7 @@
     <small style="color:#777">4.9/5 (2340 Reviews)</small>
   </div>
 
-  <!-- BUTTON 1 with tracking -->
+  <!-- BUTTON 1 – new TG link -->
   <a class="btn" id="joinBtn1" href="https://t.me/+fptb6Ai1SM83ZjFl" target="_blank" rel="noopener">
     Join Free Telegram Channel →
   </a>
@@ -217,7 +210,7 @@
   <div class="feature"><div class="icon">🎓</div>Educational Market Analysis</div>
   <div class="feature"><div class="icon">👥</div>50,000+ Subscribers Community</div>
 
-  <!-- BUTTON 2 with tracking (same link) -->
+  <!-- BUTTON 2 – new TG link -->
   <a class="btn" id="joinBtn2" href="https://t.me/+fptb6Ai1SM83ZjFl" target="_blank" rel="noopener">
     Join Free Telegram Channel →
   </a>
@@ -234,7 +227,7 @@
     <a href="https://t.me/+3XoqJNLxYHswNTc1" target="_blank" rel="noopener">ADSBUILD AGENCY</a>
   </div>
 
-  <!-- ====== NEW META PIXEL (ID: 1366610342251854) ====== -->
+  <!-- ====== META PIXEL (NEW ID: 1514332644039801) ====== -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -244,68 +237,62 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1366610342251854');
+    fbq('init', '1514332644039801');
     fbq('track', 'PageView');
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1366610342251854&ev=PageView&noscript=1" />
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1514332644039801&ev=PageView&noscript=1" />
   </noscript>
   <!-- ====== END META PIXEL ====== -->
 
-  <!-- ====== EVENT TRACKING (telegram clicks) ====== -->
+  <!-- ====== EVENT TRACKING (Telegram Clicks) ====== -->
   <script>
     (function() {
-      // helper: track event on both join buttons
+      // track Telegram join clicks with fbq events
       function trackTelegramClick() {
         if (typeof fbq !== 'undefined') {
-          fbq('track', 'Lead', {content_name: 'Telegram Join', content_category: 'CTA'});
-          fbq('track', 'CompleteRegistration', {content_name: 'Telegram Channel'});
+          // send both Lead and CompleteRegistration for better funnel visibility
+          fbq('track', 'Lead', { content_name: 'Telegram Join', content_category: 'CTA' });
+          fbq('track', 'CompleteRegistration', { content_name: 'Telegram Channel' });
+          console.log('📊 fbq events fired: Lead + CompleteRegistration');
         } else {
-          // fallback – just in case pixel not loaded, but it will be.
-          console.log('📊 fbq event: Lead + CompleteRegistration (Telegram click)');
+          console.warn('fbq not available – pixel might be blocked.');
         }
       }
 
-      // get both buttons
+      // Get both join buttons
       var btn1 = document.getElementById('joinBtn1');
       var btn2 = document.getElementById('joinBtn2');
 
-      function attachClickHandler(btn) {
+      function attachHandler(btn) {
         if (!btn) return;
         btn.addEventListener('click', function(e) {
-          // track both Lead and CompleteRegistration (common for signups)
+          // track the conversion event
           trackTelegramClick();
-          // let the link open naturally (href already points to new TG link)
+          // allow navigation to Telegram (href already set)
         });
       }
 
-      attachClickHandler(btn1);
-      attachClickHandler(btn2);
+      attachHandler(btn1);
+      attachHandler(btn2);
 
-      // also track if any other link with .btn is clicked (just in case)
+      // Also track any other .btn that points to the same tg link (just in case)
       var allBtns = document.querySelectorAll('.btn');
       allBtns.forEach(function(btn) {
-        // avoid double binding if already attached (but we use ids, safe)
+        // avoid double binding on the two main buttons
         if (btn.id !== 'joinBtn1' && btn.id !== 'joinBtn2') {
-          btn.addEventListener('click', function(e) {
-            // track only if it's a telegram link? we want only tg clicks.
-            if (btn.href && btn.href.includes('t.me/+fptb6Ai1SM83ZjFl')) {
+          // but only if it's the telegram link
+          if (btn.href && btn.href.includes('t.me/+fptb6Ai1SM83ZjFl')) {
+            btn.addEventListener('click', function(e) {
               trackTelegramClick();
-            }
-          });
+            });
+          }
         }
       });
-
-      // additional: track page view again? not needed, but we can track custom event on load
-      // but already PageView fires. we also send custom event after 1s to show engagement (optional)
-      // but we keep it clean.
     })();
   </script>
 
-  <!-- tiny extra: track button visibility or scroll? not needed but robust -->
-  <!-- All links updated to new TG channel: https://t.me/+fptb6Ai1SM83ZjFl -->
-  <!-- Pixel replaced with new ID: 1366610342251854 -->
-
+  <!-- all links updated: new pixel ID 1514332644039801, new TG channel link -->
 </div>
 </body>
 </html>
